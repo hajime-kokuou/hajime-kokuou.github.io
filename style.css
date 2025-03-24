@@ -12,9 +12,13 @@ header {
     color: white;
 }
 
+.menu-container {
+    position: relative;
+}
+
 .menu-button {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: white;
     display: flex;
@@ -23,60 +27,67 @@ header {
     flex-direction: column;
     cursor: pointer;
     position: relative;
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .bar {
-    width: 20px;
+    width: 25px;
     height: 3px;
     background: black;
-    margin: 3px 0;
+    margin: 4px 0;
     transition: all 0.3s ease-in-out;
 }
 
 #menu {
-    position: fixed;
+    position: absolute;
     top: 0;
-    right: -200px;
-    width: 200px;
-    height: 100%;
-    background: #444;
-    transition: right 0.3s ease-in-out;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
     display: flex;
+    justify-content: center;
     align-items: center;
+    clip-path: circle(50%);
 }
 
 #menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 100%;
-    text-align: center;
-}
-
-#menu li {
-    padding: 20px;
+    display: none;
 }
 
 #menu a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 18px;
 }
 
-/* メニュー展開時のアニメーション */
+/* メニュー展開時 */
 .menu-open .menu-button {
-    transform: translateX(-150px);
+    transform: rotate(180deg);
 }
 
 .menu-open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(4px, 4px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .menu-open .bar:nth-child(2) {
-    transform: rotate(-45deg) translate(4px, -4px);
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* 半円メニューのアニメーション */
 .menu-open #menu {
-    right: 0;
+    width: 250px;
+    height: 100px;
+    border-radius: 50px 50px 50px 50px;
+    clip-path: inset(0px 0px 0px 0px round 50px);
+}
+
+.menu-open #menu ul {
+    display: block;
 }
